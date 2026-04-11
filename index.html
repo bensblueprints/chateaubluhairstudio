@@ -103,14 +103,17 @@ nav.scrolled {
   padding: 16px 48px;
 }
 .nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem; font-weight: 300;
-  color: var(--champagne);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  display: flex; align-items: center;
   text-decoration: none;
 }
-.nav-logo span { font-weight: 600; }
+.nav-logo img {
+  height: 36px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+.nav-logo:hover img { opacity: 1; }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a {
   font-family: var(--font-body);
@@ -251,29 +254,12 @@ nav.scrolled {
   margin-bottom: 32px;
   opacity: 0;
 }
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 10vw, 9rem);
-  font-weight: 300;
-  color: var(--cream);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-.hero-title em {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--champagne);
-}
-.hero-subtitle {
-  font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--gold-light);
-  letter-spacing: 0.05em;
-  margin-top: 16px;
+.hero-logo {
+  max-width: clamp(320px, 50vw, 600px);
+  height: auto;
+  filter: brightness(0) invert(1);
   opacity: 0;
+  margin-bottom: 8px;
 }
 .hero-divider {
   width: 60px; height: 1px;
@@ -826,7 +812,7 @@ footer {
 
 <!-- Navigation -->
 <nav>
-  <a href="#" class="nav-logo">Chateau <span>Blu</span></a>
+  <a href="#" class="nav-logo"><img src="https://chateaubluhairstudio.com/wp-content/uploads/2017/11/Logopit_1510062203341-1.png" alt="Chateau Blu Hair Studio"></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services & Pricing</a></li>
@@ -874,8 +860,7 @@ footer {
   <div class="hero-lines"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Newtown Square, PA &nbsp;&middot;&nbsp; Est. 2016</p>
-    <h1 class="hero-title">Chateau <em>Blu</em></h1>
-    <p class="hero-subtitle">Hair Studio</p>
+    <img src="https://chateaubluhairstudio.com/wp-content/uploads/2017/11/Logopit_1510062203341-1.png" alt="Chateau Blu Hair Studio" class="hero-logo">
     <div class="hero-divider"></div>
     <p class="hero-tagline">Where luxury &amp; comfort meet</p>
   </div>
@@ -1167,7 +1152,7 @@ footer {
 
 <!-- Footer -->
 <footer>
-  <div class="footer-logo">Chateau Blu Hair Studio</div>
+  <div class="footer-logo"><img src="https://chateaubluhairstudio.com/wp-content/uploads/2017/11/Logopit_1510062203341-1.png" alt="Chateau Blu Hair Studio" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.7;"></div>
   <p class="footer-text">&copy; 2016 — 2026 Chateau Blu Hair Studio. All rights reserved. &nbsp;|&nbsp; 11 St Albans Circle, Newtown Square, PA 19073</p>
 </footer>
 
@@ -1181,9 +1166,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .set('.preloader', { display: 'none' });
 
   // Hero entrance
-  tl.from('.hero-title', { y: 60, opacity: 0, duration: 1.2, ease: 'power3.out' }, '-=0.6')
+  tl.to('.hero-logo', { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }, '-=0.6')
     .to('.hero-eyebrow', { opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.8')
-    .to('.hero-subtitle', { opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.5')
     .to('.hero-divider', { opacity: 1, width: 60, duration: 0.6, ease: 'power2.out' }, '-=0.4')
     .to('.hero-tagline', { opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.3')
     .to('.hero-scroll', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.2');
